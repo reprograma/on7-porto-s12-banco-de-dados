@@ -1,0 +1,79 @@
+Gabarito Exercícios de Revisão
+
+1 - Criar um banco de dados chamado: Curso;
+
+use Curso
+
+2 - Criar uma collection chamada: collectionCurso;
+
+db.createCollection(“collectionCurso”)
+
+3 - Adicionar 6 documentos dentro desta collection com a propriedades: descricao, quantidadeAlunos, status e disciplina, populados conforme abaixo:
+
+descricao: Curso de Android
+quantidadeAlunos: 50
+status: ativo
+disciplina: introdução
+
+descricao: Corte e Costura
+quantidadeAlunos: 10
+status: ativo
+disciplina: modelagem
+
+
+descricao: Confeitaria
+quantidadeAlunos: 25
+status: inativo
+disciplina: introdução
+
+
+descricao: Cabeleireiro
+quantidadeAlunos: 5
+status: ativo
+disciplina: Tintura
+
+
+descricao: Mecânica
+quantidadeAlunos: 50
+status: inativo
+disciplina: manutenção
+
+
+descricao: Curso de IOS
+quantidadeAlunos: 50
+status: ativo
+disciplina: Scrum
+
+db.collectionCurso.insertMany{ "descricao": "Curso de Android”, “quantidadeAlunos”: 50, “status”: “ativo”, “disciplina”: “introdução"
+})
+
+4 - Selecionar todos os registros e apresentar de uma forma organizada.
+
+db.collectionCurso.find().pretty()
+
+5 - Selecionar todos os cursos cujo status seja ativo.
+
+db.collectionCurso.find({"status": "ativo"}).pretty()
+
+6 - Selecionar todos os cursos cuja descrição é igual a Confeitaria.
+
+db.collectionCurso.find({"descricao": "Confeitaria"}).pretty()
+
+7 - Selecionar todos os cursos cuja quantidade de alunos seja igual a 50.
+
+db.collectionCurso.find({"quantidadeAlunos": 50}).pretty()
+
+8 - Selecionar todos os cursos cuja quantidade de alunos seja igual a 50 E esteja com status inativo.
+
+db.collectionCurso.find({"quantidadeAlunos": 50, "status": "inativo"}).pretty()
+
+9 - Selecionar todos os cursos cuja quantidade de alunos seja igual a 50 OU esteja com status ativo.
+
+db.collectionCurso.find({ $or: [{"quantidadeAlunos": 50}, {"status": "ativo"}]}).pretty()
+
+10 - Trazer apenas os primeiros 3 registros que possuem status ativo.
+
+db.collectionCurso.find({"status": "ativo"}).limit(3).pretty()
+
+11 - Bônus/Desafio - Trazer a quantidade de registros que existem no banco com status igual a ativo.
+db.collectionCurso.find({"status": "ativo"}).count()
